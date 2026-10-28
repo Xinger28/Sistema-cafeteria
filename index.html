@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Coffee Bar Katy</title>
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/cliente.css" />
+</head>
+<body>
+
+  <!-- 
+    Página principal del cliente.
+    Cuando el cliente escanea el QR de su mesa, llega aquí con ?mesa=N en la URL.
+    Si no viene con número de mesa, se le pide que escanee el QR.
+    El JavaScript (js/cliente.js) lee el parámetro y muestra el menú o el aviso.
+  -->
+
+  <header class="header-cliente">
+    <div class="logo-container">
+      <h1 class="logo-texto">☕ Coffee Bar Katy</h1>
+    </div>
+  </header>
+
+  <main id="app">
+
+    <!-- Aviso cuando no hay mesa en la URL -->
+    <section id="seccion-sin-mesa" class="seccion hidden">
+      <div class="aviso-centro">
+        <div class="icono-qr">📱</div>
+        <h2>Escanea el QR de tu mesa</h2>
+        <p>Para hacer tu pedido, escanea el código QR que está sobre tu mesa.</p>
+      </div>
+    </section>
+
+    <!-- Vista principal del menú (se muestra cuando hay mesa) -->
+    <section id="seccion-menu" class="seccion hidden">
+
+      <div class="info-mesa">
+        <span id="etiqueta-mesa">Mesa —</span>
+      </div>
+
+      <!-- El menú se genera dinámicamente desde js/cliente.js -->
+      <div id="contenedor-menu"></div>
+
+      <!-- Carrito flotante / resumen del pedido -->
+      <div id="carrito-flotante" class="carrito-flotante hidden">
+        <button id="btn-ver-carrito" class="btn-carrito-flotante">
+          🛒 Ver pedido · <span id="carrito-total">Bs 0,00</span>
+        </button>
+      </div>
+
+    </section>
+
+    <!-- Panel del carrito / confirmación -->
+    <section id="seccion-carrito" class="seccion hidden">
+      <div class="cabecera-carrito">
+        <button id="btn-volver-menu" class="btn-volver">← Seguir pidiendo</button>
+        <h2>Tu pedido</h2>
+      </div>
+      <div id="lista-carrito"></div>
+      <div id="resumen-carrito" class="resumen-carrito"></div>
+      <button id="btn-confirmar-pedido" class="btn-primario btn-grande">
+        Confirmar pedido
+      </button>
+    </section>
+
+    <!-- Confirmación enviada -->
+    <section id="seccion-confirmado" class="seccion hidden">
+      <div class="aviso-centro">
+        <div class="icono-ok">✅</div>
+        <h2>¡Pedido enviado!</h2>
+        <p>Tu pedido fue recibido. En breve lo preparamos.</p>
+        <p>Puedes agregar más cosas cuando quieras.</p>
+        <button id="btn-pedir-mas" class="btn-primario">Agregar más</button>
+      </div>
+    </section>
+
+  </main>
+
+  <script type="module" src="js/supabase-cliente.js"></script>
+  <script type="module" src="js/cliente.js"></script>
+
+</body>
+</html>

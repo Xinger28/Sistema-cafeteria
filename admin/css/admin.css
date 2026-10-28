@@ -1,0 +1,274 @@
+/* ===================================================
+   admin.css — Estilos del panel de administración
+   (encargado, jefe, barista). Tablet y PC primero,
+   pero funcional en móvil también.
+   =================================================== */
+
+/* --- Layout general del admin --- */
+.layout-admin {
+  display: grid;
+  grid-template-rows: auto 1fr;
+  min-height: 100vh;
+}
+
+/* --- Barra superior del admin --- */
+.topbar {
+  background: var(--color-primario);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.8rem 1.5rem;
+  box-shadow: var(--sombra);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.topbar-logo {
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+.topbar-nav {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.topbar-nav a, .topbar-nav button {
+  color: rgba(255,255,255,0.85);
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 600;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.3rem 0.6rem;
+  border-radius: 6px;
+  transition: background var(--transicion), color var(--transicion);
+}
+
+.topbar-nav a:hover, .topbar-nav button:hover {
+  background: rgba(255,255,255,0.15);
+  color: #fff;
+}
+
+.topbar-nav a.activo {
+  background: rgba(255,255,255,0.2);
+  color: #fff;
+}
+
+.topbar-usuario {
+  font-size: 0.85rem;
+  color: rgba(255,255,255,0.75);
+}
+
+/* --- Contenido principal del admin --- */
+.contenido-admin {
+  padding: 1.5rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* --- Página de login --- */
+.login-contenedor {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  background: var(--color-primario);
+}
+
+.login-card {
+  background: #fff;
+  border-radius: var(--radio);
+  padding: 2.5rem 2rem;
+  width: 100%;
+  max-width: 380px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.25);
+}
+
+.login-titulo {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.login-titulo h1 {
+  font-size: 1.5rem;
+  color: var(--color-primario);
+  margin-bottom: 0.3rem;
+}
+
+.login-titulo p {
+  font-size: 0.9rem;
+  color: var(--color-texto-suave);
+}
+
+/* --- Tarjetas de KPI / resumen --- */
+.kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.kpi-card {
+  background: var(--color-fondo-card);
+  border-radius: var(--radio);
+  box-shadow: var(--sombra);
+  padding: 1.2rem 1rem;
+  text-align: center;
+}
+
+.kpi-valor {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--color-primario);
+  line-height: 1.1;
+}
+
+.kpi-etiqueta {
+  font-size: 0.82rem;
+  color: var(--color-texto-suave);
+  margin-top: 0.3rem;
+}
+
+/* --- Tabla de pedidos --- */
+.tabla-contenedor {
+  background: var(--color-fondo-card);
+  border-radius: var(--radio);
+  box-shadow: var(--sombra);
+  overflow-x: auto;
+}
+
+/* --- Tarjetas de pedido (vista compacta) --- */
+.pedido-card {
+  background: var(--color-fondo-card);
+  border-radius: var(--radio);
+  box-shadow: var(--sombra);
+  margin-bottom: 1rem;
+  overflow: hidden;
+  border-left: 4px solid var(--color-borde);
+  transition: box-shadow var(--transicion);
+}
+
+.pedido-card:hover {
+  box-shadow: var(--sombra-hover);
+}
+
+.pedido-card.estado-recibido   { border-left-color: var(--estado-recibido); }
+.pedido-card.estado-preparando { border-left-color: var(--estado-preparando); }
+.pedido-card.estado-listo      { border-left-color: var(--estado-listo); }
+.pedido-card.estado-entregado  { border-left-color: var(--estado-entregado); }
+
+.pedido-cabecera {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.8rem 1rem;
+  background: var(--color-fondo);
+  border-bottom: 1px solid var(--color-borde);
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.pedido-mesa {
+  font-weight: 700;
+  font-size: 1rem;
+}
+
+.pedido-hora {
+  font-size: 0.82rem;
+  color: var(--color-texto-suave);
+}
+
+.pedido-cuerpo {
+  padding: 0.8rem 1rem;
+}
+
+.pedido-item {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.92rem;
+  padding: 0.2rem 0;
+}
+
+.pedido-item-nota {
+  font-size: 0.8rem;
+  color: var(--color-alerta);
+  font-style: italic;
+  padding-left: 1rem;
+}
+
+.pedido-acciones {
+  display: flex;
+  gap: 0.5rem;
+  padding: 0.8rem 1rem;
+  border-top: 1px solid var(--color-borde);
+  flex-wrap: wrap;
+}
+
+/* --- Sección de títulos --- */
+.seccion-titulo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.seccion-titulo h2 {
+  font-size: 1.2rem;
+  color: var(--color-primario-osc);
+}
+
+/* --- Modal genérico --- */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.5);
+  z-index: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+
+.modal-overlay.hidden { display: none; }
+
+.modal-caja {
+  background: var(--color-fondo-card);
+  border-radius: var(--radio);
+  box-shadow: 0 8px 40px rgba(0,0,0,0.3);
+  padding: 2rem;
+  width: 100%;
+  max-width: 480px;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+.modal-titulo {
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  color: var(--color-primario-osc);
+}
+
+.modal-acciones {
+  display: flex;
+  gap: 0.75rem;
+  justify-content: flex-end;
+  margin-top: 1.5rem;
+  flex-wrap: wrap;
+}
+
+/* --- Responsive tablet/PC --- */
+@media (max-width: 600px) {
+  .contenido-admin { padding: 1rem; }
+  .topbar { padding: 0.7rem 1rem; }
+  .topbar-nav a span { display: none; } /* oculta texto, deja iconos */
+}

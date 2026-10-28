@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Panel del encargado — Coffee Bar Katy</title>
+  <link rel="stylesheet" href="css/admin.css" />
+  <link rel="stylesheet" href="../css/base.css" />
+</head>
+<body class="layout-admin">
+
+  <!--
+    encargado.html — Panel principal del personal de sala.
+    Módulo 0: solo el esqueleto HTML con navegación y áreas vacías.
+    Módulo 4: se añade la lógica de pedidos y mesas en tiempo real.
+    Módulo 5: se añade la sección de caja y resumen del día.
+  -->
+
+  <!-- Barra superior -->
+  <header class="topbar">
+    <span class="topbar-logo">☕ Coffee Bar Katy</span>
+    <nav class="topbar-nav">
+      <a href="#pedidos" class="activo" data-seccion="pedidos">🧾 Pedidos</a>
+      <a href="#mesas"   data-seccion="mesas">🪑 Mesas</a>
+      <a href="#caja"    data-seccion="caja">💰 Caja</a>
+      <span class="topbar-usuario" id="usuario-nombre">Encargado</span>
+      <button id="btn-cerrar-sesion">Salir</button>
+    </nav>
+  </header>
+
+  <!-- Contenido principal -->
+  <main class="contenido-admin">
+
+    <!-- Sección: Pedidos en tiempo real -->
+    <section id="seccion-pedidos" class="seccion-admin">
+      <div class="seccion-titulo">
+        <h2>Pedidos activos</h2>
+        <span id="reloj" class="texto-suave"></span>
+      </div>
+      <div id="lista-pedidos">
+        <p class="texto-suave">Cargando pedidos… (se activa en el Módulo 4)</p>
+      </div>
+    </section>
+
+    <!-- Sección: Mesas -->
+    <section id="seccion-mesas" class="seccion-admin hidden">
+      <div class="seccion-titulo">
+        <h2>Estado de mesas</h2>
+      </div>
+      <div id="grid-mesas">
+        <p class="texto-suave">Cargando mesas… (se activa en el Módulo 4)</p>
+      </div>
+    </section>
+
+    <!-- Sección: Caja -->
+    <section id="seccion-caja" class="seccion-admin hidden">
+      <div class="seccion-titulo">
+        <h2>Caja del día</h2>
+      </div>
+      <p class="texto-suave">Se activa en el Módulo 5.</p>
+    </section>
+
+  </main>
+
+  <script type="module" src="../js/supabase-cliente.js"></script>
+  <script type="module" src="js/encargado.js"></script>
+
+</body>
+</html>

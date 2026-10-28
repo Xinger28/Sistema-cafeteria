@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Iniciar sesión — Coffee Bar Katy</title>
+  <link rel="stylesheet" href="css/admin.css" />
+  <link rel="stylesheet" href="../css/base.css" />
+</head>
+<body>
+
+  <!--
+    login.html — Pantalla de inicio de sesión para el personal.
+    Encargados y el jefe ingresan aquí con correo + contraseña.
+    El JavaScript redirige según el rol:
+      - rol "encargado"  → encargado.html
+      - rol "jefe"       → jefe.html
+      - rol "barista"    → barista.html (módulo 8)
+    La autenticación real con Supabase Auth se implementa en el Módulo 2.
+    Por ahora muestra el formulario y el JS simula el login.
+  -->
+
+  <div class="login-contenedor">
+    <div class="login-card">
+
+      <div class="login-titulo">
+        <h1>☕ Coffee Bar Katy</h1>
+        <p>Panel de personal</p>
+      </div>
+
+      <form id="form-login" novalidate>
+
+        <div class="campo">
+          <label for="correo">Correo electrónico</label>
+          <input
+            type="email"
+            id="correo"
+            name="correo"
+            autocomplete="email"
+            placeholder="tu@correo.com"
+            required
+          />
+        </div>
+
+        <div class="campo">
+          <label for="contrasena">Contraseña</label>
+          <input
+            type="password"
+            id="contrasena"
+            name="contrasena"
+            autocomplete="current-password"
+            placeholder="••••••••"
+            required
+          />
+        </div>
+
+        <div id="mensaje-login" class="mensaje-error hidden"></div>
+
+        <button type="submit" class="btn-primario btn-grande" id="btn-ingresar">
+          Ingresar
+        </button>
+
+      </form>
+
+    </div>
+  </div>
+
+  <script type="module" src="../js/supabase-cliente.js"></script>
+  <script type="module" src="js/login.js"></script>
+
+</body>
+</html>

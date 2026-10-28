@@ -1,0 +1,20 @@
+# Archivos de configuración con claves privadas
+.env
+.env.local
+*.env
+
+# Dependencias (si algún día se usan herramientas de Node solo para desarrollo)
+node_modules/
+
+# Archivos del sistema operativo
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Archivos de editores
+.vscode/settings.json
+*.swp
+*.swo
+
+# Logs
+*.log

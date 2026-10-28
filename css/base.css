@@ -1,0 +1,294 @@
+/* ===================================================
+   base.css — Estilos globales compartidos entre todas
+   las páginas (cliente, encargado, jefe, barista).
+   
+   Filosofía: móvil primero, buen contraste, accesible.
+   Las variables CSS aquí definen la paleta de la app.
+   =================================================== */
+
+/* --- Variables de color y tipografía --- */
+:root {
+  --color-primario:     #6F4E37;   /* marrón café */
+  --color-primario-osc: #4a3325;
+  --color-acento:       #D4A96A;   /* dorado cálido */
+  --color-acento-claro: #f5e6cc;
+  --color-fondo:        #faf7f4;   /* blanco cálido */
+  --color-fondo-card:   #ffffff;
+  --color-texto:        #1a1a1a;
+  --color-texto-suave:  #666666;
+  --color-borde:        #e0d5c8;
+  --color-exito:        #2d7a2d;
+  --color-alerta:       #b85c00;
+  --color-error:        #c0392b;
+  --color-error-fondo:  #fde8e8;
+
+  /* Estados de pedido */
+  --estado-recibido:    #3b82f6;   /* azul */
+  --estado-preparando:  #f59e0b;   /* ámbar */
+  --estado-listo:       #10b981;   /* verde */
+  --estado-entregado:   #6b7280;   /* gris */
+  --estado-cancelado:   #ef4444;   /* rojo */
+
+  --radio: 12px;
+  --radio-sm: 8px;
+  --sombra: 0 2px 8px rgba(0,0,0,0.10);
+  --sombra-hover: 0 4px 16px rgba(0,0,0,0.15);
+  --transicion: 0.2s ease;
+  --fuente: 'Segoe UI', system-ui, -apple-system, sans-serif;
+}
+
+/* --- Reset mínimo --- */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--fuente);
+  background-color: var(--color-fondo);
+  color: var(--color-texto);
+  line-height: 1.5;
+  min-height: 100vh;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  color: var(--color-primario);
+  text-decoration: none;
+}
+
+/* --- Utilidades generales --- */
+.hidden {
+  display: none !important;
+}
+
+.texto-centro {
+  text-align: center;
+}
+
+.texto-suave {
+  color: var(--color-texto-suave);
+  font-size: 0.9rem;
+}
+
+/* --- Botones --- */
+.btn-primario {
+  background-color: var(--color-primario);
+  color: #fff;
+  border: none;
+  border-radius: var(--radio-sm);
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color var(--transicion), transform var(--transicion);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.btn-primario:hover {
+  background-color: var(--color-primario-osc);
+  transform: translateY(-1px);
+}
+
+.btn-primario:active {
+  transform: translateY(0);
+}
+
+.btn-primario:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.btn-grande {
+  width: 100%;
+  justify-content: center;
+  padding: 1rem;
+  font-size: 1.1rem;
+}
+
+.btn-secundario {
+  background-color: transparent;
+  color: var(--color-primario);
+  border: 2px solid var(--color-primario);
+  border-radius: var(--radio-sm);
+  padding: 0.65rem 1.25rem;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transicion);
+}
+
+.btn-secundario:hover {
+  background-color: var(--color-primario);
+  color: #fff;
+}
+
+.btn-peligro {
+  background-color: var(--color-error);
+  color: #fff;
+  border: none;
+  border-radius: var(--radio-sm);
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: opacity var(--transicion);
+}
+
+.btn-peligro:hover {
+  opacity: 0.85;
+}
+
+.btn-volver {
+  background: none;
+  border: none;
+  color: var(--color-primario);
+  font-size: 1rem;
+  cursor: pointer;
+  padding: 0.5rem 0;
+  font-weight: 600;
+}
+
+/* --- Cards genéricas --- */
+.card {
+  background: var(--color-fondo-card);
+  border-radius: var(--radio);
+  box-shadow: var(--sombra);
+  padding: 1rem;
+}
+
+/* --- Badges de estado --- */
+.badge {
+  display: inline-block;
+  padding: 0.2rem 0.6rem;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.badge-recibido   { background: #dbeafe; color: var(--estado-recibido); }
+.badge-preparando { background: #fef3c7; color: var(--estado-preparando); }
+.badge-listo      { background: #d1fae5; color: var(--estado-listo); }
+.badge-entregado  { background: #f3f4f6; color: var(--estado-entregado); }
+.badge-cancelado  { background: var(--color-error-fondo); color: var(--estado-cancelado); }
+
+/* --- Mensajes de error / aviso --- */
+.mensaje-error {
+  background: var(--color-error-fondo);
+  color: var(--color-error);
+  border: 1px solid #f5c6c6;
+  border-radius: var(--radio-sm);
+  padding: 0.75rem 1rem;
+  font-size: 0.95rem;
+  margin: 0.5rem 0;
+}
+
+.mensaje-ok {
+  background: #d1fae5;
+  color: var(--color-exito);
+  border: 1px solid #a7f3d0;
+  border-radius: var(--radio-sm);
+  padding: 0.75rem 1rem;
+  font-size: 0.95rem;
+  margin: 0.5rem 0;
+}
+
+/* --- Spinner de carga --- */
+.spinner {
+  width: 2rem;
+  height: 2rem;
+  border: 3px solid var(--color-borde);
+  border-top-color: var(--color-primario);
+  border-radius: 50%;
+  animation: girar 0.8s linear infinite;
+  margin: 2rem auto;
+}
+
+@keyframes girar {
+  to { transform: rotate(360deg); }
+}
+
+/* --- Formularios --- */
+.campo {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  margin-bottom: 1rem;
+}
+
+.campo label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--color-texto-suave);
+}
+
+.campo input,
+.campo select,
+.campo textarea {
+  border: 2px solid var(--color-borde);
+  border-radius: var(--radio-sm);
+  padding: 0.65rem 0.8rem;
+  font-size: 1rem;
+  font-family: var(--fuente);
+  background: var(--color-fondo-card);
+  color: var(--color-texto);
+  transition: border-color var(--transicion);
+  width: 100%;
+}
+
+.campo input:focus,
+.campo select:focus,
+.campo textarea:focus {
+  outline: none;
+  border-color: var(--color-primario);
+}
+
+/* --- Tabla base (para paneles de admin) --- */
+.tabla-base {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+}
+
+.tabla-base th {
+  text-align: left;
+  padding: 0.6rem 0.8rem;
+  background: var(--color-acento-claro);
+  color: var(--color-primario-osc);
+  font-weight: 700;
+  border-bottom: 2px solid var(--color-borde);
+}
+
+.tabla-base td {
+  padding: 0.6rem 0.8rem;
+  border-bottom: 1px solid var(--color-borde);
+  vertical-align: middle;
+}
+
+.tabla-base tr:last-child td {
+  border-bottom: none;
+}
+
+.tabla-base tr:hover td {
+  background: var(--color-fondo);
+}
+
+/* --- Layout responsive para paneles de admin --- */
+@media (min-width: 768px) {
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+  .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1.5rem; }
+}

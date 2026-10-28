@@ -1,0 +1,265 @@
+/* ===================================================
+   cliente.css — Estilos específicos de la vista del
+   cliente (index.html). Diseño móvil primero.
+   =================================================== */
+
+/* --- Header del cliente --- */
+.header-cliente {
+  background: var(--color-primario);
+  color: #fff;
+  padding: 1rem 1.2rem;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: var(--sombra);
+}
+
+.logo-texto {
+  font-size: 1.3rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+/* --- Secciones (una visible a la vez) --- */
+.seccion {
+  padding: 1rem 1rem 6rem; /* espacio para el carrito flotante */
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* --- Info de mesa --- */
+.info-mesa {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.6rem 0;
+  margin-bottom: 0.5rem;
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--color-primario);
+}
+
+/* --- Categorías del menú --- */
+.categoria-titulo {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--color-primario-osc);
+  padding: 1rem 0 0.5rem;
+  border-bottom: 2px solid var(--color-acento-claro);
+  margin-bottom: 0.75rem;
+}
+
+/* --- Tarjeta de producto --- */
+.producto-card {
+  background: var(--color-fondo-card);
+  border-radius: var(--radio);
+  box-shadow: var(--sombra);
+  margin-bottom: 0.75rem;
+  overflow: hidden;
+  transition: box-shadow var(--transicion);
+}
+
+.producto-card:hover {
+  box-shadow: var(--sombra-hover);
+}
+
+.producto-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 0.9rem 1rem;
+  gap: 0.5rem;
+}
+
+.producto-nombre {
+  font-weight: 600;
+  font-size: 1rem;
+  flex: 1;
+}
+
+.producto-precio {
+  font-weight: 700;
+  color: var(--color-primario);
+  white-space: nowrap;
+  font-size: 1rem;
+}
+
+/* Nota opcional del producto */
+.producto-nota-contenedor {
+  padding: 0 1rem 0.9rem;
+  display: none; /* se muestra al agregar al carrito */
+}
+
+.producto-nota-contenedor.visible {
+  display: block;
+}
+
+/* --- Control de cantidad (en la tarjeta) --- */
+.control-cantidad {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  border-top: 1px solid var(--color-borde);
+}
+
+.btn-cantidad {
+  background: none;
+  border: none;
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--color-primario);
+  padding: 0.6rem 1.1rem;
+  cursor: pointer;
+  transition: background-color var(--transicion);
+  line-height: 1;
+}
+
+.btn-cantidad:hover {
+  background: var(--color-acento-claro);
+}
+
+.cantidad-texto {
+  flex: 1;
+  text-align: center;
+  font-weight: 700;
+  font-size: 1rem;
+}
+
+/* --- Carrito flotante --- */
+.carrito-flotante {
+  position: fixed;
+  bottom: 1.2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 200;
+  width: calc(100% - 2rem);
+  max-width: 560px;
+}
+
+.btn-carrito-flotante {
+  width: 100%;
+  background: var(--color-primario);
+  color: #fff;
+  border: none;
+  border-radius: var(--radio);
+  padding: 1rem 1.5rem;
+  font-size: 1.05rem;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 4px 20px rgba(111,78,55,0.4);
+  transition: background-color var(--transicion);
+}
+
+.btn-carrito-flotante:hover {
+  background: var(--color-primario-osc);
+}
+
+/* --- Pantalla del carrito --- */
+.cabecera-carrito {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.5rem 0 1rem;
+  border-bottom: 2px solid var(--color-borde);
+  margin-bottom: 1rem;
+}
+
+.cabecera-carrito h2 {
+  flex: 1;
+  font-size: 1.2rem;
+}
+
+.item-carrito {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.7rem 0;
+  border-bottom: 1px solid var(--color-borde);
+  gap: 0.5rem;
+}
+
+.item-carrito-nombre {
+  flex: 1;
+  font-weight: 600;
+}
+
+.item-carrito-nota {
+  font-size: 0.82rem;
+  color: var(--color-texto-suave);
+  margin-top: 0.1rem;
+}
+
+.item-carrito-precio {
+  font-weight: 700;
+  color: var(--color-primario);
+  white-space: nowrap;
+}
+
+.btn-quitar-item {
+  background: none;
+  border: none;
+  color: var(--color-error);
+  font-size: 1.1rem;
+  cursor: pointer;
+  padding: 0.2rem 0.4rem;
+  border-radius: 4px;
+  transition: background var(--transicion);
+}
+
+.btn-quitar-item:hover {
+  background: var(--color-error-fondo);
+}
+
+.resumen-carrito {
+  padding: 1rem 0;
+  text-align: right;
+  font-size: 1.1rem;
+  font-weight: 700;
+  border-top: 2px solid var(--color-borde);
+  margin: 0.5rem 0 1.5rem;
+}
+
+/* --- Pantalla de aviso (sin mesa / confirmado) --- */
+.aviso-centro {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 60vh;
+  text-align: center;
+  gap: 1rem;
+  padding: 2rem 0;
+}
+
+.icono-qr, .icono-ok {
+  font-size: 4rem;
+}
+
+.aviso-centro h2 {
+  font-size: 1.4rem;
+}
+
+.aviso-centro p {
+  color: var(--color-texto-suave);
+  max-width: 280px;
+}
+
+/* --- Producto agotado --- */
+.producto-card.agotado {
+  opacity: 0.55;
+}
+
+.badge-agotado {
+  background: var(--color-error-fondo);
+  color: var(--color-error);
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 0.15rem 0.5rem;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+
+/* --- Tablet y PC (la vista cliente rara vez se usa ahí, pero por si acaso) --- */
+@media (min-width: 600px) {
+  .logo-texto { font-size: 1.5rem; }
+}

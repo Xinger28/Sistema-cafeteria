@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Panel del jefe — Coffee Bar Katy</title>
+  <link rel="stylesheet" href="css/admin.css" />
+  <link rel="stylesheet" href="../css/base.css" />
+</head>
+<body class="layout-admin">
+
+  <!--
+    jefe.html — Panel del jefe/dueño.
+    Módulo 0: esqueleto.
+    Módulo 6: productos e inventario.
+    Módulo 7: reportes y gestión de usuarios.
+  -->
+
+  <header class="topbar">
+    <span class="topbar-logo">☕ Coffee Bar Katy — Jefe</span>
+    <nav class="topbar-nav">
+      <a href="#reportes"  data-seccion="reportes"  class="activo">📊 Reportes</a>
+      <a href="#productos" data-seccion="productos">🧾 Productos</a>
+      <a href="#usuarios"  data-seccion="usuarios">👥 Usuarios</a>
+      <a href="#mesas-cfg" data-seccion="mesas-cfg">🪑 Mesas</a>
+      <span class="topbar-usuario" id="usuario-nombre">Jefe</span>
+      <button id="btn-cerrar-sesion">Salir</button>
+    </nav>
+  </header>
+
+  <main class="contenido-admin">
+
+    <section id="seccion-reportes" class="seccion-admin">
+      <div class="seccion-titulo"><h2>Reportes</h2></div>
+      <p class="texto-suave">Se activa en el Módulo 7.</p>
+    </section>
+
+    <section id="seccion-productos" class="seccion-admin hidden">
+      <div class="seccion-titulo"><h2>Productos e inventario</h2></div>
+      <p class="texto-suave">Se activa en el Módulo 6.</p>
+    </section>
+
+    <section id="seccion-usuarios" class="seccion-admin hidden">
+      <div class="seccion-titulo"><h2>Gestión de usuarios</h2></div>
+      <p class="texto-suave">Se activa en el Módulo 7.</p>
+    </section>
+
+    <section id="seccion-mesas-cfg" class="seccion-admin hidden">
+      <div class="seccion-titulo"><h2>Configuración de mesas</h2></div>
+      <p class="texto-suave">Se activa en el Módulo 4.</p>
+    </section>
+
+  </main>
+
+  <script type="module" src="../js/supabase-cliente.js"></script>
+  <script type="module" src="js/jefe.js"></script>
+
+</body>
+</html>
