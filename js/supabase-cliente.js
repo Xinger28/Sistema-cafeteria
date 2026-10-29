@@ -18,14 +18,15 @@
    =================================================== */
 
 /* =====================================================
-   MÓDULO 0 — Placeholder: Supabase aún no está conectado.
-   En el Módulo 1 se descomenta el import real y se ponen
-   las claves del proyecto de Supabase.
+   supabase-cliente.js — Configuración de Supabase.
+
+   Solo contiene la URL pública y la clave anon.
+   NUNCA pongas aquí la clave service_role.
    ===================================================== */
 
-// import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm';
-// const SUPABASE_URL  = 'REEMPLAZAR_URL';
-// const SUPABASE_ANON = 'REEMPLAZAR_ANON_KEY';
-// export const supabase = createClient(SUPABASE_URL, SUPABASE_ANON);
+import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm';
 
-export const supabase = null; // se reemplaza en Módulo 1
+const SUPABASE_URL  = 'https://tegwesymgwctelobwrjp.supabase.co';
+const SUPABASE_ANON = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRlZ3dlc3ltZ3djdGVsb2J3cmpwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTMyNDE3OTEsImV4cCI6MjEwODgxNzc5MX0.PRDKYrScX2FM54K9yfb11N1fQL5-eD3zS8ebfXKiwM0';
+
+export const supabase = createClient(SUPABASE_URL, SUPABASE_ANON);

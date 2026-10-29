@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Prueba de conexión — Coffee Bar Katy</title>
+  <link rel="stylesheet" href="css/base.css" />
+  <style>
+    body { max-width: 700px; margin: 2rem auto; padding: 1rem; }
+    h1 { color: var(--color-primario); margin-bottom: 1.5rem; }
+    .prueba { margin-bottom: 1rem; }
+    .prueba h3 { font-size: 0.95rem; color: var(--color-texto-suave); margin-bottom: 0.3rem; }
+    pre { background: #f4f4f4; padding: 0.75rem; border-radius: 8px; font-size: 0.85rem; overflow-x: auto; white-space: pre-wrap; }
+    .ok  { color: var(--color-exito); font-weight: 700; }
+    .err { color: var(--color-error); font-weight: 700; }
+  </style>
+</head>
+<body>
+  <h1>☕ Prueba de conexión a Supabase</h1>
+  <p class="texto-suave">Este archivo es solo para verificar que la BD está bien. Bórralo o ignóralo después.</p>
+  <div id="resultados"></div>
+
+  <script type="module">
+    import { supabase } from './js/supabase-cliente.js';
+
+    const cont = document.getElementById('resultados');
+
+    function agregarResultado(titulo, ok, datos) {
+      const div = document.createElement('div');
+      div.className = 'prueba';
+      div.innerHTML = `
+        <h3>${titulo} <span class="${ok ? 'ok' : 'err'}">${ok ? '✅ OK' : '❌ ERROR'}</span></h3>
+        <pre>${JSON.stringify(datos, null, 2)}</pre>
+      `;
+      cont.appendChild(div);
+    }
+
+    async function probar() {
+      // 1. Categorías
+      const { data: cats, error: e1 } = await supabase
+        .from('categorias').select('id, nombre, orden').order('orden');
+      agregarResultado('Categorías', !e1, e1 ?? cats);
+
+      // 2. Productos
+      const { data: prods, error: e2 } = await supabase
+        .from('productos').select('id, nombre, precio, disponible').order('id');
+      agregarResultado('Productos (10 esperados)', !e2, e2 ?? prods);
+
+      // 3. Mesas
+      const { data: mesas, error: e3 } = await supabase
+        .from('mesas').select('id, numero, estado').order('numero');
+      agregarResultado('Mesas (8 esperadas)', !e3, e3 ?? mesas);
+
+      // 4. Función obtener_o_crear_cuenta (mesa 1)
+      const { data: cuentaId, error: e4 } = await supabase
+        .rpc('obtener_o_crear_cuenta', { p_mesa_numero: 1 });
+      agregarResultado('Función obtener_o_crear_cuenta (mesa 1)', !e4, e4 ?? { cuenta_id: cuentaId });
+    }
+
+    probar();
+  </script>
+</body>
+</html>
